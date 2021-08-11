@@ -1,0 +1,22 @@
+/* pages/mine/mine.wxss */
+.study-card {
+  margin: 32rpx 0rpx;
+  width: 100%;
+  border-radius: 4rpx;
+}
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.user-info .avatar {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+}
+.user-info .info-area {
+  line-height: 50rpx;
+}
+.test-btn {
+  margin: 16rpx 8rpx;
+}

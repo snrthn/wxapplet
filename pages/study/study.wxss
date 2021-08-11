@@ -1,0 +1,8 @@
+/* pages/study/study.wxss */
+.study-card {
+  margin: 16rpx 0rpx;
+  padding: 16rpx 0rpx;
+  width: 100%;
+  border-radius: 4rpx;
+  border-bottom: 1px solid #cccccc;
+}

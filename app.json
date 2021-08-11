@@ -1,0 +1,45 @@
+{
+  "entryPagePath": "pages/index/index",
+  "pages":[
+    "pages/index/index",
+    "pages/study/study",
+    "pages/mine/mine"
+  ],
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#3388ff",
+    "position": "bottom",
+    "list": [
+      {
+        "text": "主页",
+        "pagePath": "pages/index/index",
+        "iconPath": "images/tabbar/home.png",
+        "selectedIconPath": "images/tabbar/home_act.png"
+      },
+      {
+        "text": "学习",
+        "pagePath": "pages/study/study",
+        "iconPath": "images/tabbar/study.png",
+        "selectedIconPath": "images/tabbar/study_act.png"
+      },
+      {
+        "text": "我的",
+        "pagePath": "pages/mine/mine",
+        "iconPath": "images/tabbar/mine.png",
+        "selectedIconPath": "images/tabbar/mine_act.png"
+      }
+    ]
+  },
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "小强上学",
+    "navigationBarTextStyle":"black"
+  },
+  "debug": false,
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "useExtendedLib": {
+    "weui": true
+  }
+}

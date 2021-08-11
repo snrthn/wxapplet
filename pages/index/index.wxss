@@ -1,0 +1,15 @@
+/**index.wxss**/
+/* 全局变量 */
+.device-info {
+  font-size: 40rpx;
+  font-weight: bold;
+  line-height: 80rpx;
+  color: #3388ff;
+}
+
+.tips {
+  font-size: 28rpx;
+  line-height: 54rpx;
+  color: #ff0000;
+  background: #ffff00;
+}
