@@ -2,17 +2,17 @@
 // 发起网络请求功能封装
 
 // 基础版本信息
-let ENV = wx.getAccountInfoSync().miniProgram.envVersion;
+const ENV = wx.getAccountInfoSync().miniProgram.envVersion;
 
 // 环境参数
-let urls = {
+const urls = {
     develop: 'https://www.snrthn.com/api/dev/', // 开发环境
     trial: 'https://www.snrthn.com/api/stage/', // 体验环境
     release: 'https://www.snrthn.com/api/prod/', // 正式环境
 };
 
 // 请求基础路径
-let baseUrl = urls[ENV];
+const baseUrl = urls[ENV];
 
 /**
  * GET请求

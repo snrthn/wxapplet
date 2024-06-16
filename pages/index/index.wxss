@@ -6,10 +6,18 @@
   line-height: 80rpx;
   color: #3388ff;
 }
-
 .tips {
   font-size: 28rpx;
   line-height: 54rpx;
   color: #ff0000;
   background: #ffff00;
+}
+.img-container {
+  width: 100%;
+  height: 500rpx;
+  border: 2rpx solid #3388ff;
+  box-sizing: border-box;
+  background-image: url("https://www.snrthn.com/files/202302/1677040834401_822720.jpg");
+  background-position: center;
+  background-size: 100% 100%;
 }

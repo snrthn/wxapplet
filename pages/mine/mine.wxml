@@ -1,7 +1,7 @@
 <!--pages/mine/mine.wxml-->
 <view class="container">
     <view>这里是我的个人中心！</view>
-    <image class="study-card" src="{{ baseUrl + '/pages/005.png' }}"></image>
+    <image class="study-card" src="{{ baseUrl + '202302/1677040852955_085522.jpg' }}"></image>
 
     <view class="user-info" wx:if="{{ isLogin }}">
         <image mode="widthFix" class="avatar" src="{{ avatarUrl }}"></image>
@@ -22,11 +22,11 @@
         </view>
     </view>
 
-    <button class="test-btn" type="primary" bindtap="getUserInfo">获取用户信息</button>
-    <button class="test-btn" type="primary" bindtap="showDialogHandle">测试弹窗组件</button>
+    <button hidden="{{ isLogin }}" class="test-btn" type="primary" bindtap="getUserInfo">获取用户信息</button>
+    <button hidden="{{ !isLogin }}" class="test-btn" type="warn" bindtap="showDialogHandle">退出当前登录</button>
 
 
-    <mp-dialog title="这是一个弹窗" show="{{ showDialog }}" bindbuttontap="tapDialogButton" buttons="{{[{text: '取消'}, {text: '确认'}]}}">
-        <view>欢迎使用微信小程序</view>
+    <mp-dialog title="退出登录" show="{{ showDialog }}" bindbuttontap="tapDialogButton" buttons="{{[{text: '取消'}, {text: '确认'}]}}">
+        <view>确定要退出登录吗？</view>
     </mp-dialog>
 </view>

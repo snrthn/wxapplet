@@ -1,10 +1,13 @@
 <!--pages/study/study.wxml-->
 <view class="container">
-    <view class="study-card" wx:for="{{ myCardList }}" wx:key="index">
-        <view>课程标题：{{ item.CourseName }}</view>
-        <view>开课时间：{{ item.StartTime }}</view>
-        <view>选课时间：{{ item.SelectTime }}</view>
-        <view>平时成绩：{{ item.CoursewareScore || '-' }}</view>
-        <view>所占学分：{{ item.StudyCredit }}</view>
+    <view wx:if="{{ !isLogin }}">请先登录！</view>
+    <view wx:else>
+        <view class="study-card" wx:for="{{ myCardList }}" wx:key="index">
+            <view>课程标题：{{ item.CourseName }}</view>
+            <view>开课时间：{{ item.StartTime }}</view>
+            <view>选课时间：{{ item.SelectTime }}</view>
+            <view>平时成绩：{{ item.CoursewareScore || '-' }}</view>
+            <view>所占学分：{{ item.StudyCredit }}</view>
+        </view>
     </view>
 </view>

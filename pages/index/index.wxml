@@ -1,135 +1,140 @@
 <!--index.wxml-->
 <view class="container">
   <view>欢迎使用 WeChart Applet!</view>
-  <view class="tips">{{ msg }}</view>
+  <view wx:if="{{ isLogin }}" class="tips">{{ msg }}</view>
 
-  <view class="device-info">设备信息：</view>
-  <view wx:if="{{ sysInfo.brand }}">
-    <text>设备品牌：</text>
-    <text>{{ sysInfo.brand }}</text>
-  </view>
-  <view wx:if="{{ sysInfo.model }}">
-    <text>设备型号：</text>
-    <text>{{ sysInfo.model }}</text>
-  </view>
-  <view wx:if="{{ sysInfo.pixelRatio }}">
-    <text>设备像素比：</text>
-    <text>{{ sysInfo.pixelRatio }}</text>
-  </view>
-  <view wx:if="{{ sysInfo.screenWidth }}">
-    <text>屏幕宽度：</text>
-    <text>{{ sysInfo.screenWidth }}</text>
-  </view>
-  <view wx:if="{{ sysInfo.screenHeight }}">
-    <text>屏幕高度：</text>
-    <text>{{ sysInfo.screenHeight }}</text>
-  </view>
-  <view wx:if="{{ sysInfo.windowWidth }}">
-    <text>可使用窗口宽度：</text>
-    <text>{{ sysInfo.windowWidth }}</text>
-  </view>
-  <view wx:if="{{ sysInfo.windowHeight }}">
-    <text>可使用窗口高度：</text>
-    <text>{{ sysInfo.windowHeight }}</text>
-  </view>
-  <view wx:if="{{ sysInfo.statusBarHeight }}">
-    <text>状态栏的高度：</text>
-    <text>{{ sysInfo.statusBarHeight }}</text>
-  </view>
-  <view wx:if="{{ sysInfo.language }}">
-    <text>微信语言：</text>
-    <text>{{ sysInfo.language }}</text>
-  </view>
-  <view wx:if="{{ sysInfo.version }}">
-    <text>微信版本号：</text>
-    <text>{{ sysInfo.version }}</text>
-  </view>
-  <view wx:if="{{ sysInfo.system }}">
-    <text>操作系统及版本：</text>
-    <text>{{ sysInfo.system }}</text>
-  </view>
-  <view wx:if="{{ sysInfo.platform }}">
-    <text>客户端平台：</text>
-    <text>{{ sysInfo.platform }}</text>
-  </view>
-  <view wx:if="{{ sysInfo.fontSizeSetting }}">
-    <text>用户字体大小：</text>
-    <text>{{ sysInfo.fontSizeSetting }}</text>
-  </view>
-  <view wx:if="{{ sysInfo.SDKVersion }}">
-    <text>客户端基础库版本：</text>
-    <text>{{ sysInfo.SDKVersion }}</text>
-  </view>
-  <view wx:if="{{ sysInfo.benchmarkLevel }}">
-    <text>设备性能等级：</text>
-    <text>{{ sysInfo.benchmarkLevel }}</text>
-  </view>
-  <view wx:if="{{ sysInfo.albumAuthorized }}">
-    <text>允许微信使用相册的开关：</text>
-    <text>{{ sysInfo.albumAuthorized }}</text>
-  </view>
-  <view wx:if="{{ sysInfo.cameraAuthorized }}">
-    <text>允许微信使用摄像头的开关：</text>
-    <text>{{ sysInfo.cameraAuthorized }}</text>
-  </view>
-  <view wx:if="{{ sysInfo.locationAuthorized }}">
-    <text>允许微信使用定位的开关：</text>
-    <text>{{ sysInfo.locationAuthorized }}</text>
-  </view>
-  <view wx:if="{{ sysInfo.microphoneAuthorized }}">
-    <text>允许微信使用麦克风的开关：</text>
-    <text>{{ sysInfo.microphoneAuthorized }}</text>
-  </view>
-  <view wx:if="{{ sysInfo.notificationAuthorized }}">
-    <text>允许微信通知的开关：</text>
-    <text>{{ sysInfo.notificationAuthorized }}</text>
-  </view>
-  <view wx:if="{{ sysInfo.notificationAlertAuthorized }}">
-    <text>允许微信通知带有提醒的开关：</text>
-    <text>{{ sysInfo.notificationAlertAuthorized }}</text>
-  </view>
-  <view wx:if="{{ sysInfo.notificationBadgeAuthorized }}">
-    <text>允许微信通知带有标记的开关：</text>
-    <text>{{ sysInfo.notificationBadgeAuthorized }}</text>
-  </view>
-  <view wx:if="{{ sysInfo.notificationSoundAuthorized }}">
-    <text>允许微信通知带有声音的开关：</text>
-    <text>{{ sysInfo.notificationSoundAuthorized }}</text>
-  </view>
-  <view wx:if="{{ sysInfo.bluetoothEnabled }}">
-    <text>蓝牙的系统开关：</text>
-    <text>{{ sysInfo.bluetoothEnabled }}</text>
-  </view>
-  <view wx:if="{{ sysInfo.locationEnabled }}">
-    <text>地理位置的系统开关：</text>
-    <text>{{ sysInfo.locationEnabled }}</text>
-  </view>
-  <view wx:if="{{ sysInfo.wifiEnabled }}">
-    <text>Wi-Fi 的系统开关：</text>
-    <text>{{ sysInfo.wifiEnabled }}</text>
-  </view>
-  <view wx:if="{{ sysInfo.safeArea }}">
-    <text>在竖屏正方向下的安全区域：</text>
-    <text>{{ sysInfo.safeArea }}</text>
-  </view>
-  <view wx:if="{{ sysInfo.locationReducedAccuracy }}">
-    <text>定位方式：</text>
-    <text>{{ sysInfo.locationReducedAccuracy }}</text>
-  </view>
-  <view wx:if="{{ sysInfo.theme }}">
-    <text>系统当前主题：</text>
-    <text>{{ sysInfo.theme }}</text>
-  </view>
-  <view wx:if="{{ sysInfo.host }}">
-    <text>当前小程序运行的宿主环境：</text>
-    <text>{{ sysInfo.host }}</text>
-  </view>
-  <view wx:if="{{ sysInfo.enableDebug }}">
-    <text>是否已打开调试：</text>
-    <text>{{ sysInfo.enableDebug }}</text>
-  </view>
-  <view wx:if="{{ sysInfo.deviceOrientation }}">
-    <text>设备方向：</text>
-    <text>{{ sysInfo.deviceOrientation }}</text>
+  <view class="img-container"></view>
+
+  <view wx:if="{{ !isLogin }}">请先登录！</view>
+  <view wx:else>
+    <view class="device-info">设备信息：</view>
+    <view wx:if="{{ sysInfo.brand }}">
+      <text>设备品牌：</text>
+      <text>{{ sysInfo.brand }}</text>
+    </view>
+    <view wx:if="{{ sysInfo.model }}">
+      <text>设备型号：</text>
+      <text>{{ sysInfo.model }}</text>
+    </view>
+    <view wx:if="{{ sysInfo.pixelRatio }}">
+      <text>设备像素比：</text>
+      <text>{{ sysInfo.pixelRatio }}</text>
+    </view>
+    <view wx:if="{{ sysInfo.screenWidth }}">
+      <text>屏幕宽度：</text>
+      <text>{{ sysInfo.screenWidth }}</text>
+    </view>
+    <view wx:if="{{ sysInfo.screenHeight }}">
+      <text>屏幕高度：</text>
+      <text>{{ sysInfo.screenHeight }}</text>
+    </view>
+    <view wx:if="{{ sysInfo.windowWidth }}">
+      <text>可使用窗口宽度：</text>
+      <text>{{ sysInfo.windowWidth }}</text>
+    </view>
+    <view wx:if="{{ sysInfo.windowHeight }}">
+      <text>可使用窗口高度：</text>
+      <text>{{ sysInfo.windowHeight }}</text>
+    </view>
+    <view wx:if="{{ sysInfo.statusBarHeight }}">
+      <text>状态栏的高度：</text>
+      <text>{{ sysInfo.statusBarHeight }}</text>
+    </view>
+    <view wx:if="{{ sysInfo.language }}">
+      <text>微信语言：</text>
+      <text>{{ sysInfo.language }}</text>
+    </view>
+    <view wx:if="{{ sysInfo.version }}">
+      <text>微信版本号：</text>
+      <text>{{ sysInfo.version }}</text>
+    </view>
+    <view wx:if="{{ sysInfo.system }}">
+      <text>操作系统及版本：</text>
+      <text>{{ sysInfo.system }}</text>
+    </view>
+    <view wx:if="{{ sysInfo.platform }}">
+      <text>客户端平台：</text>
+      <text>{{ sysInfo.platform }}</text>
+    </view>
+    <view wx:if="{{ sysInfo.fontSizeSetting }}">
+      <text>用户字体大小：</text>
+      <text>{{ sysInfo.fontSizeSetting }}</text>
+    </view>
+    <view wx:if="{{ sysInfo.SDKVersion }}">
+      <text>客户端基础库版本：</text>
+      <text>{{ sysInfo.SDKVersion }}</text>
+    </view>
+    <view wx:if="{{ sysInfo.benchmarkLevel }}">
+      <text>设备性能等级：</text>
+      <text>{{ sysInfo.benchmarkLevel }}</text>
+    </view>
+    <view wx:if="{{ sysInfo.albumAuthorized }}">
+      <text>允许微信使用相册的开关：</text>
+      <text>{{ sysInfo.albumAuthorized }}</text>
+    </view>
+    <view wx:if="{{ sysInfo.cameraAuthorized }}">
+      <text>允许微信使用摄像头的开关：</text>
+      <text>{{ sysInfo.cameraAuthorized }}</text>
+    </view>
+    <view wx:if="{{ sysInfo.locationAuthorized }}">
+      <text>允许微信使用定位的开关：</text>
+      <text>{{ sysInfo.locationAuthorized }}</text>
+    </view>
+    <view wx:if="{{ sysInfo.microphoneAuthorized }}">
+      <text>允许微信使用麦克风的开关：</text>
+      <text>{{ sysInfo.microphoneAuthorized }}</text>
+    </view>
+    <view wx:if="{{ sysInfo.notificationAuthorized }}">
+      <text>允许微信通知的开关：</text>
+      <text>{{ sysInfo.notificationAuthorized }}</text>
+    </view>
+    <view wx:if="{{ sysInfo.notificationAlertAuthorized }}">
+      <text>允许微信通知带有提醒的开关：</text>
+      <text>{{ sysInfo.notificationAlertAuthorized }}</text>
+    </view>
+    <view wx:if="{{ sysInfo.notificationBadgeAuthorized }}">
+      <text>允许微信通知带有标记的开关：</text>
+      <text>{{ sysInfo.notificationBadgeAuthorized }}</text>
+    </view>
+    <view wx:if="{{ sysInfo.notificationSoundAuthorized }}">
+      <text>允许微信通知带有声音的开关：</text>
+      <text>{{ sysInfo.notificationSoundAuthorized }}</text>
+    </view>
+    <view wx:if="{{ sysInfo.bluetoothEnabled }}">
+      <text>蓝牙的系统开关：</text>
+      <text>{{ sysInfo.bluetoothEnabled }}</text>
+    </view>
+    <view wx:if="{{ sysInfo.locationEnabled }}">
+      <text>地理位置的系统开关：</text>
+      <text>{{ sysInfo.locationEnabled }}</text>
+    </view>
+    <view wx:if="{{ sysInfo.wifiEnabled }}">
+      <text>Wi-Fi 的系统开关：</text>
+      <text>{{ sysInfo.wifiEnabled }}</text>
+    </view>
+    <view wx:if="{{ sysInfo.safeArea }}">
+      <text>在竖屏正方向下的安全区域：</text>
+      <text>{{ sysInfo.safeArea }}</text>
+    </view>
+    <view wx:if="{{ sysInfo.locationReducedAccuracy }}">
+      <text>定位方式：</text>
+      <text>{{ sysInfo.locationReducedAccuracy }}</text>
+    </view>
+    <view wx:if="{{ sysInfo.theme }}">
+      <text>系统当前主题：</text>
+      <text>{{ sysInfo.theme }}</text>
+    </view>
+    <view wx:if="{{ sysInfo.host }}">
+      <text>当前小程序运行的宿主环境：</text>
+      <text>{{ sysInfo.host }}</text>
+    </view>
+    <view wx:if="{{ sysInfo.enableDebug }}">
+      <text>是否已打开调试：</text>
+      <text>{{ sysInfo.enableDebug }}</text>
+    </view>
+    <view wx:if="{{ sysInfo.deviceOrientation }}">
+      <text>设备方向：</text>
+      <text>{{ sysInfo.deviceOrientation }}</text>
+    </view>
   </view>
 </view>

@@ -4,6 +4,7 @@ const app = getApp()
 
 Page({
   data: {
+    isLogin: false,
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
@@ -24,20 +25,28 @@ Page({
       this.setData({
         canIUseGetUserProfile: true
       })
-
-      // 发起一个测试请求
-      let that = this;
-      wx.get({
-        url: '/test',
-        success (res) {
-          console.log(res);
-          that.setData({
-            msg: res.data.message
-          })
-        }
-      })
-
     }
+  },
+  onShow () {
+    const { isLogin } = wx.getState();
+    this.setData({ isLogin });
+
+    if (isLogin && !this.data.msg) {
+      this.fetchData();
+    }
+  },
+  fetchData () {
+    // 发起一个测试请求
+    let that = this;
+    wx.get({
+      url: '/test',
+      success (res) {
+        console.log(res);
+        that.setData({
+          msg: res.data.message
+        })
+      }
+    })
   },
   getUserProfile(e) {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗

@@ -1,4 +1,7 @@
 // pages/mine/mine.js
+
+const { userInfo, isLogin } = wx.getState();
+
 Page({
 
   /**
@@ -6,11 +9,11 @@ Page({
    */
   data: {
     baseUrl: getApp().globalData.baseUrl,
-    isLogin: false,
-    avatarUrl: '',
-    nickName: '',
-    gender: '',
-    address: '',
+    isLogin: isLogin,
+    avatarUrl: userInfo.avatarUrl,
+    nickName: userInfo.nickName,
+    gender: userInfo.gender,
+    address: userInfo.address,
     showDialog: false
   },
 
@@ -18,7 +21,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options)
   },
 
   /**
@@ -88,6 +91,9 @@ Page({
           gender: info.gender,
           address: info.country + info.province + info.city,
         })
+
+        wx.updateState('isLogin', true);
+        wx.updateState('userInfo', res.userInfo);
       },
       fail (err) {
         console.log(err);
@@ -115,6 +121,17 @@ Page({
     } else if (label === '确认') {
       console.log('你点击了' + label);
       this.hideDialogHandle();
+
+      this.setData({
+        isLogin: false,
+        avatarUrl: '',
+        nickName: '',
+        gender: '',
+        address: ''
+      })
+
+      wx.updateState('isLogin', false);
+      wx.updateState('userInfo', {});
     }
   },
 
